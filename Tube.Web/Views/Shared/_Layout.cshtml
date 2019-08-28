@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @*收索bootcdn，jquery复制链接，*@
+    
+
+
+    <environment include="Development">@*开发环境下使用本地boot库*@
+    <link href="~/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+</environment>
+
+<environment exclude="Development">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.css" 
+          asp-fallback-href="~/node_modules/bootstrap/dist/css/bootstrap.css"
+          asp-fallback-test-class="sr-only"
+          asp-fallback-test-property="position"
+          asp-fallback-test-value="absolute">
+</environment>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a asp-controller="Account" asp-action="Register">注册</a>
+            </li>
+            <li class="nav-item">
+                <a asp-controller="Account" asp-action="Login">登录</a>
+            </li>
+        </ul>
+    </nav>
+    <div>
+        @RenderBody()
+    </div>
+    <div>
+        @RenderSection("bottom", required: false)
+    </div>
+
+    <vc:welcome></vc:welcome>
+    <environment include="Development">
+        <script src="~/node_modules/jquery/dist/jquery.js"></script>
+        <script src="~/node_modules/jquery-validation/dist/jquery.validate.js"></script>
+        <script src="~/node_modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js"></script>
+    </environment>
+
+    <environment exclude="Development">
+        <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"
+                asp-fallback-src="~/node_modules/jquery/dist/jquery.js"
+                asp-fallback-test="Window.jQuery"></script>
+        </environment>
+   </body>
+
+</html>

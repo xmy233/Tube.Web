@@ -1,0 +1,25 @@
+﻿@model HomeIndexViewModel
+@{
+    ViewBag.Title = "Home Index";
+
+}
+<partial name="_StudentTable" for="Students" />@*Razor视图复用代码 使用tag Helper*@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Hello From Index.cshtml</title>
+</head>
+<body>
+    @section bottom
+        {
+        <div>
+            <a asp-action="Create">添加一个学生</a>
+        </div>
+    }
+
+
+    
+</body>
+</html>
